@@ -70,6 +70,7 @@
 
       <div class="login" id="loginIn">
         <form>
+{{csrf_field()}}
           <div class="form-group">
             <label class="style-lab" for="exampleInputEmail1"><i class="fa fa-user" aria-hidden="true"></i> PHONE NUMBER OR EMAIL</label>
             <input type="email" class="style-in form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -95,45 +96,45 @@
        <div class="modal-dialog">
          <div class="modal-content">
             <div class="modal-body">
-               <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times-circle" aria-hidden="true" id="closeRegister"></i></button>
                <div class="accountCreate" id="signUp">
                  <form>
                    <div class="form-group">
                      <label class="style-lab" for="exampleInputEmail1"><i class="fa fa-user" aria-hidden="true"></i> PHONE NUMBER</label>
-                     <input type="email" class="style-in form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                     <input type="number" class="style-in form-control" id="txtPhoneNumber" name="txtPhoneNumber" aria-describedby="emailHelp">
                    </div>
 
                    <div class="form-group">
                      <label class="style-lab" for="exampleInputEmail1"><i class="fa fa-envelope" aria-hidden="true"></i> EMAIL</label>
-                     <input type="email" class="style-in form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                     <input type="email" class="style-in form-control" id="txtEmail" name="txtEmail" aria-describedby="emailHelp">
                    </div>
 
                    <div class="form-group">
                      <label for="example-password-input" class="style-lab "><i class="fa fa-unlock-alt" aria-hidden="true"></i> PASSWORD</label>
-                     <input class="style-in form-control" type="password" value="" id="example-password-input">
+                     <input class="style-in form-control" type="password" value="" id="txtPassword" name="txtPassword">
                    </div>
 
                    <div class="form-group">
                       <div class="form-check">
                         <label class="form-check-label">
-                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                          <input type="radio" class="form-check-input" name="inputSexo" id="SexoF" value="Femenino" checked>
                           WOMAN
                         </label>
                       </div>
                       <div class="form-check">
                       <label class="form-check-label">
-                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                          <input type="radio" class="form-check-inpu" name="inputSexo" id="SexoM" value="Masculino">
                           MAN
                         </label>
                       </div>
                    </div>
                   <div class="form-check">
                    <label class="form-check-label">
-                     <input type="checkbox" class="form-check-input">
+                     <input type="checkbox" class="form-check-input" >
                      Yes, I've read and accept the privacy policy and the terms & conditions.I guarantee that I am at least 18 years old.
                    </label>
                  </div>
-                   <button class="btn btn-primary style-bt" type="submit">SIGN UP</button>
+                   <button class="btn btn-primary style-bt" type="button" id="btnSend">SIGN UP</button>
                </div>
             </div>
          </div>
@@ -652,5 +653,43 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/app.js"></script>
    
+
+
+<script type="text/javascript">
+  
+    $(document).ready(function()
+    {
+
+
+      $("#btnSend").click(function()
+      {
+              $.ajax({
+                  url: 'register', //indicamos la ruta donde se genera la hora
+                  dataType: 'json',//indicamos que es de tipo texto plano
+                  type: "POST",
+                  async: false,   //ponemos el parámetro asyn a falso
+                  data: {
+                    _token:$('input[name=_token]').val(),
+                    email:$("#txtEmail").val(),
+                    celular:$("#txtPhoneNumber").val(),
+                    password:$("#txtPassword").val(),
+                    sexo: $('input:radio[name=inputSexo]:checked').val()
+                 },
+               success: function(data) {
+                $("#closeRegister").click();
+
+                 console.log(data);
+                
+               },
+               error: function (data) {
+
+                $("#closeRegister").click();
+                console.log(data);          
+            }
+            }).responseText;
+      });
+    }); 
+
+</script>
 </body>
 </html>
