@@ -12,7 +12,7 @@
 		<div class="row ">
 			<div class="col-xs-12">
 				<div class="card text-center">
-				{!! Form::open(['url' => 'create-request', 'method' => 'get']) !!}
+				<form action="/request-confirm" method="get">
 					<div id="contenido-1">
 						<img src="/imgs/tentazionelogo.png" alt="" class="img-responsive centrado">
 						<button id="rqs-date" class="btn btn-tentazione text-uppercase m-50">Request a date</button>	
@@ -95,7 +95,7 @@
 										When should your date start?
 									</div>
 									<div class="col-xs-12 text-center m-tp-20">
-										<input type="text" name="timepicker" class="timepicker"/>
+										<input type="text" name="hora-inicio" class="timepicker"/>
 									</div>
 									<div class="col-xs-12 text-center m-tp-160">
 										<button id="btn-next-3" class="btn btn-tentazione btn-block" >Next</button>
@@ -195,7 +195,7 @@
 							</div>
 						</div>
 					</div>
-					{!! Form::close()!!}
+					</form>
 				</div>
 			</div>
 		</div>
