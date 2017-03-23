@@ -1,0 +1,133 @@
+/*computador*/
+.btn{
+	background: transparent;
+
+}
+.btn .active{
+	color:#a2040d;
+}
+.centrado{
+	margin: 0 auto;
+}
+.b-r{
+	background: #a2040d;
+}
+.c-r{
+	color:#a2040d;
+}
+body{
+	font-family: 'Open Sans', sans-serif;
+
+}
+.card{
+	background: #FFF;
+	min-height: 85vh;
+	-webkit-box-shadow: 3px 0px 25px 0px rgba(79,4,4,1);
+	-moz-box-shadow: 3px 0px 25px 0px rgba(79,4,4,1);
+	box-shadow: 3px 0px 25px 0px rgba(79,4,4,1);
+}
+.btn-tentazione{
+	background: #a2040d;
+	color: #FFF;
+	font-weight: bold;
+	border-radius: 0px;
+}
+.btn-tentazione:hover, .btn-tentazione:active, .btn-tentazione:visited, .btn-tentazione:focus {
+	color: #FFF;
+	border: none;
+	outline: 0!important;
+}
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+	outline: 0px auto -webkit-focus-ring-color!important;
+	outline-offset: 0px!important;
+}
+.m-50{
+	margin-top: 50px;
+}
+.panel-head {
+	padding-top: 12px;
+	padding-bottom: 2px;
+	font-weight: 600;
+	background: rgb(248, 248, 248);
+	-webkit-box-shadow: 1px 18px 27px -13px rgba(0,0,0,1);
+	-moz-box-shadow: 1px 18px 27px -13px rgba(0,0,0,1);
+	box-shadow: 1px 12px 27px -16px rgba(0,0,0,1);
+}
+.back-panel{
+	width: auto;
+	display: inline;
+	float: left;
+	position: absolute;
+	z-index: 1000000000;
+	left: 24px;
+	top: 4px;
+	color: #a2040d;
+}
+.body-panel{
+	padding: 20px 0px;
+	height: auto;
+}
+.m-tp-20{
+	margin-top: 20px;
+}
+.radio-personalizado{
+	border: 1px solid #a2040d;
+	padding: 8px 0px;
+	margin-bottom: 9px;
+	color: #525252;
+	cursor: pointer;
+}
+.checked-rd{
+	background: #a2040d;
+	color: #fff;
+	font-weight: 600;
+}
+.full{
+	width: 100%;
+}
+.textarea-custom{
+	width: 100%;
+	border: 1px solid #a2040d;
+}
+.wickedpicker{
+	left:50px!important;
+}
+.m-tp-160{
+	margin-top: 160px;
+}
+.timepicker{
+	text-align: center;
+}
+input[type=range] {
+	-webkit-appearance: none;
+	background-color: #c1b7b7;
+	width: 100%;
+	height: 20px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	background-color: #a2040d;
+	opacity: 0.8;
+	border-radius: 100%;
+	width: 25px;
+	height: 25px;
+}
+
+select{
+	width: 100%;
+	height: 40px;
+	border: none;
+	border-bottom: solid 1px #000;
+	outline: 0px;
+}
+
+/*Tablet*/
+@media screen(max-width: 1024px) {
+	
+}
+
+/*Celular*/
+@media screen(max-width: 798px) {
+	
+}
