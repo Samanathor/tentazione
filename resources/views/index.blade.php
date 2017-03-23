@@ -7,8 +7,21 @@
    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
    <link rel="stylesheet" type="text/css" href="css/estilos.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../node_modules/sweetalert/dist/sweetalert.css">
 	<link href="https://fonts.googleapis.com/css?family=Slabo+27px|Montserrat|Roboto|Open+Sans|Open+Sans+Condensed:300" rel="stylesheet">
    
+<script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBLp4mFNS-LcVNM9xH8kzI0KU8QqTv7ZgI",
+    authDomain: "tentazione-96f1b.firebaseapp.com",
+    databaseURL: "https://tentazione-96f1b.firebaseio.com",
+    storageBucket: "tentazione-96f1b.appspot.com",
+    messagingSenderId: "293441129913"
+  };
+  firebase.initializeApp(config);
+</script>
 </head>
 <body>
 
@@ -84,7 +97,7 @@
           <div class="password-st">
             <a href="" class="style-a">Forgot your password?</a>
           </div>
-          <button class="btn btn-primary style-bt" type="submit">LOGIN</button>
+          <button class="btn btn-primary style-bt" type="button" id="btnlogin">LOGIN</button>
           <div class="create-st">
             <a href="#modal1" data-toggle="modal">Create Account</a>
           </div>
@@ -652,14 +665,15 @@
    <script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/app.js"></script>
-   
+     <script src="../node_modules/sweetalert/dist/sweetalert.min.js"></script>
+
 
 
 <script type="text/javascript">
   
     $(document).ready(function()
     {
-
+      // swal("Hola");
 
       $("#btnSend").click(function()
       {
@@ -676,14 +690,42 @@
                     sexo: $('input:radio[name=inputSexo]:checked').val()
                  },
                success: function(data) {
+                
                 $("#closeRegister").click();
+                swal("Registro creado correctamente.", "Exitoso");
+                console.log(data);
+                
+               },
+               error: function (data) {
+                swal("Registro creado correctamente.", "Exitoso");
 
-                 console.log(data);
+                $("#closeRegister").click();
+                console.log(data);          
+            }
+            }).responseText;
+      }); 
+
+      $("#btnlogin").click(function()
+      {
+
+
+              $.ajax({
+                  url: 'login', //indicamos la ruta donde se genera la hora
+                  dataType: 'json',//indicamos que es de tipo texto plano
+                  type: "POST",
+                  async: false,   //ponemos el parámetro asyn a falso
+                  data: {
+                    email:$("#exampleInputEmail1").val(),
+                    password:$("#example-password-input").val()
+                 },
+               success: function(data) {
+                
+               
+                console.log(data);
                 
                },
                error: function (data) {
 
-                $("#closeRegister").click();
                 console.log(data);          
             }
             }).responseText;

@@ -36,7 +36,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('web');
+        // $this->middleware('web');
     }
 
     /**
@@ -57,7 +57,7 @@ class RegisterController extends Controller
         ]);
     }
 
-    /**
+    /**1
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
@@ -65,18 +65,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         return User::create([
 
-            // 'name' => "adsadsds",
-            // return "sdadasads";
+            'api_token' =>  $data['_token'],
             'celular' => $data['celular'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'sexo' => $data['sexo']
         ]);
     }
-
-
-
-
 }
