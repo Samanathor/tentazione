@@ -121,6 +121,14 @@ select{
 	border-bottom: solid 1px #000;
 	outline: 0px;
 }
+.circle-clock{
+	    border: solid 3px #a2040d;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    padding-top: 17px;
+    margin: 29px auto;
+}
 
 /*Tablet*/
 @media screen(max-width: 1024px) {

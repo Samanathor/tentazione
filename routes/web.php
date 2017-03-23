@@ -23,3 +23,6 @@ Route::get('/home', 'HomeController@index');
 Route::get('/test', function(){
 	return view('panel');
 });
+Route::get('/test2', function(){
+	return view('confirm');
+});

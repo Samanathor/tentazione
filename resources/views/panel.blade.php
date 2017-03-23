@@ -3,8 +3,9 @@
 @section('principal')
 <style>
 	body{
-		height: 100vh;
+		min-height: 100vh;
 		background: url(/imgs/pattern-red.jpg);
+		height: 100vh;
 	}
 </style>
 <section id="principal">
