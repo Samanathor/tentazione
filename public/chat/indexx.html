@@ -1,18 +1,18 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<!--
+  Copyright 2015 Google Inc. All rights reserved.
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+      https://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Tentazione - Panel</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script  src="https://code.jquery.com/jquery-3.2.1.js"  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="  crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="/css/custom.css">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-	<link rel="stylesheet" href="/css/wickedpicker.css">
-	<script src="/js/wickedpicker.js"></script>
-	<script src="/js/jquery.countdown.min.js"></script>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="Learn how to use the Firebase platform on the Web">
@@ -60,55 +60,19 @@
       </div>
       <div id="user-container">
         <div hidden id="user-pic"></div>
+        <div hidden id="user-name"></div>
         <button hidden id="sign-out" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
           Cerrar Sesion
         </button>
-
-
         <button hidden id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
           <i class="material-icons">account_circle</i>Sign-in with Google
         </button>
       </div>
     </div>
   </header>
-<section>
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="card text-center">
-					<div class="container full">
-						<div class="row">
 
-							<div class="col-xs-12 panel-head text-center c-r">
-								<p class="text-center">Active Chat</p>
-							</div>
-						</div>
-						<div class="body-panel">
-							<div class="container full npd">
-								<!-- Si no Tiene chats activos -->
-								<div id="panel-historial" class="col-xs-12 text-center" >
-									<p style="display: none;" class="m-tp-20">You don't have active chats	</p>
-
-									<div class="list-chats">
-										<div class="chat-item m-tp-20" onclick="openChat(1)">
-											<img src="/imgs/profile-pictures/model-face.jpeg" alt="">
-											<p> <strong><span ></span></strong> <br>	Este es el ultimo mensaje</p>
-										</div>
-									</div>
-								</div>
-								<!-- Si tiene chats -->
-								<div id="panel-chat-activo" class="panel-chat shadow-material" style="display: none;">
-									<div class="container full npd">
-									<div class="back-panel"><button type="button" id="bk-chat" class="btn btn-flat-tran"><span class="glyphicon glyphicon-menu-left " aria-hidden="true"></span></button></div>
-									<div class="img-profile-panel"></div>
-										<div hidden id="user-name" class="chat-tittle panel-head c-r text-center ">
-			<br>
-										</div>
-										<div id="chat-square" class="chat-square">
-										
-										<div class="chat-actions">
+  <main class="mdl-layout__content mdl-color--grey-100">
     <div id="messages-card-container" class="mdl-cell mdl-cell--12-col mdl-grid">
-											 <main class="mdl-layout__content mdl-color--grey-100">
 
       <!-- Messages container -->
       <div id="messages-card" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--6-col-desktop">
@@ -141,17 +105,7 @@
 
     </div>
   </main>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
+</div>
 
 
 
@@ -173,26 +127,7 @@
 <script src="/chat/scripts/main.js"></script>
 
 
-<script src="/js/core.js"></script>
-   <script src="js/jquery.js"></script>
-   	<script src="js/bootstrap.min.js"></script>
-	<script src="js/app.js"></script>
-<script>
-	// Funcion para bajar el scroll
-		$('#chat-square').animate({ scrollTop: $('#chat-square').prop("scrollHeight")}, 1000);
 
-		// funcion para abrir chats segun el id
-		function openChat(identificador){
-				$('#panel-historial').hide();
-				$('#panel-chat-activo').fadeIn();
-				$('#chat-square').animate({ scrollTop: $('#chat-square').prop("scrollHeight")}, 1000);
-		}
-
-		$('#bk-chat').click(function(){
-				$('#panel-chat-activo').hide();	
-			$('#panel-historial').fadeIn();
-		});
-	</script>
 
 </body>
 </html>

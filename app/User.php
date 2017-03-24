@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+     public function citas(){
+        return $this->belongsToMany('\App\Cita','user_citas')
+            ->withPivot('cita_id','token');
+    }
 }

@@ -12,7 +12,8 @@
 	<link rel="stylesheet" href="/css/wickedpicker.css">
 	<script src="/js/wickedpicker.js"></script>
 	<script src="/js/jquery.countdown.min.js"></script>
-	
+	{{csrf_field()}}
+
 </head>
 <body>
 
@@ -24,4 +25,8 @@
 	
 </body>
 <script src="/js/core.js"></script>
+   <script src="js/jquery.js"></script>
+   	<script src="js/bootstrap.min.js"></script>
+	<script src="js/app.js"></script>
+
 </html>

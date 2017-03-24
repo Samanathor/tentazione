@@ -23,13 +23,16 @@ Route::get('/home', 'HomeController@index');
 Route::get('/test', function(){
 	return view('panel');
 });
-Route::get('/test2', function(){
+Route::get('/completado', function(){
 	return view('confirm');
 });
-Route::get('/test3', function(){
+Route::get('/proveedores', function(){
 	return view('provedores');
 });
 Route::get('/test4', function(){
 	return view('chat');
 });
+
+Route::post('/anadir-cita', 'ClienteController@createCita');
+
 

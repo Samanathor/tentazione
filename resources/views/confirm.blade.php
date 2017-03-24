@@ -53,7 +53,7 @@
 <script>
 
 	// Aqui va la fecha de la cita para el countdown
-	$("#countdown-timer").countdown("2017/03/23 17:59", function(event) {
+	$("#countdown-timer").countdown("2017/03/24 03:01", function(event) {
     $(this).text(
       event.strftime('%M:%S')
     );

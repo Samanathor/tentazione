@@ -5,7 +5,7 @@
       
       <div class="row">
       	<div class="col-xs-4 text-center"><button class="btn btn-lg"><span class="glyphicon glyphicon-user active" aria-hidden="true"></span></button></div>
-      	<div class="col-xs-4 text-center"><button class="btn btn-lg"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></button></div>
+      	<div class="col-xs-4 text-center"><button class="btn btn-lg" onclick="location.href='proveedores'"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></button></div>
       	<div class="col-xs-4 text-center"><button class="btn btn-lg"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></button></div>
       </div>
     </div>

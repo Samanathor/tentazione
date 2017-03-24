@@ -35,11 +35,11 @@
 										Choose what kind of date you have on mind
 									</div>
 									<div class="col-xs-12 text-center m-tp-20">
-										<input id="rd-dinner" style="display: none;" type="radio" name="date">
+										<input id="rd-dinner" style="display: none;" type="radio" name="date" value="1">
 										<div class="radio-personalizado" id="dinner-radio">Dinner</div>
-										<input id="rd-drinks" type="radio" style="display: none" name="date">
+										<input id="rd-drinks" type="radio" style="display: none" name="date" value="2">
 										<div class="radio-personalizado" id="drinks-radio">Drinks</div>
-										<input id="rd-tentazione" type="radio" style="display: none" name="date">
+										<input id="rd-tentazione" type="radio" style="display: none" name="date" value="3">
 										<div class="radio-personalizado" id="tentazione-radio">Tentazione</div>
 									</div>
 
@@ -68,7 +68,7 @@
 										Care to describe your plans in a little more details
 									</div>
 									<div class="col-xs-12 text-center m-tp-20">
-										<textarea class="textarea-custom" name="descripcion" id="" cols="30" rows="10"></textarea>
+										<textarea class="textarea-custom" name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
 									</div>
 
 									<div class="col-xs-12 text-center m-tp-20">
@@ -96,7 +96,7 @@
 										When should your date start?
 									</div>
 									<div class="col-xs-12 text-center m-tp-20">
-										<input type="text" name="hora-inicio" class="timepicker"/>
+										<input type="text" name="hora_inicio" id="hora_inicio" class="timepicker"/>
 									</div>
 									<div class="col-xs-12 text-center m-tp-160">
 										<button type="button" id="btn-next-3" class="btn btn-tentazione btn-block" >Next</button>
@@ -151,11 +151,11 @@
 										How much are you willing to spend?
 									</div>
 									<div class="col-xs-12 text-center m-tp-20">
-										<input id="rd-rango1" style="display: none;" type="radio" name="money">
+										<input id="rd-rango1" style="display: none;" type="radio" name="money" value="1">
 										<div class="radio-personalizado" id="rango1-radio">Between 20US - 50US</div>
-										<input id="rd-rango2" style="display: none;" type="radio" name="money">
+										<input id="rd-rango2" style="display: none;" type="radio" name="money" value="2">
 										<div class="radio-personalizado" id="rango2-radio">Between 50US - 70US</div>
-										<input id="rd-rango3" style="display: none;" type="radio" name="money">
+										<input id="rd-rango3" style="display: none;" type="radio" name="money" value="3">
 										<div class="radio-personalizado" id="rango3-radio">More than 70US</div>
 									</div>
 									<div class="col-xs-12 text-center m-tp-20" ">
@@ -190,7 +190,7 @@
 										</select>
 									</div>
 									<div class="col-xs-12 text-center m-tp-20" ">
-										<button type="submit" style="display: none;" id="btn-next-6" class="btn btn-tentazione btn-block" >Send Request</button>
+										<button type="button" style="display: none;" id="btn-next-6" class="btn btn-tentazione btn-block" >Send Request</button>
 									</div>
 								</div>
 							</div>
@@ -204,3 +204,47 @@
 </section>
 
 @stop
+
+   <script src="js/jquery.js"></script>
+
+
+<script type="text/javascript">
+  
+    $(document).ready(function()
+    {
+
+      $("#btn-next-6").click(function () {	 
+			var valor_cita=$('input:radio[name=date]:checked').val();
+
+				$.ajax({
+                  url: 'anadir-cita', //indicamos la ruta donde se genera la hora
+                  dataType: 'json',//indicamos que es de tipo texto plano
+                  type: "POST",
+                  async: false,   //ponemos el parámetro asyn a falso
+                  data: {
+                      _token:$('input[name=_token]').val(),
+                   valor_cita:valor_cita,
+                   descripcion:$("#descripcion").val(),
+                   hora_inicio:$("#hora_inicio").val(),
+                   duracion:$("#duracion-tp").val(),
+                   rango_pago:$('input:radio[name=money]:checked').val(),
+                   ciudad:$('#select-city').val(),
+                 },
+               success: function(data) {
+                location.href="completado";
+                console.log(data);
+                
+               },
+               error: function (data) {
+
+                console.log(data);          
+            }
+            }).responseText;	
+			});
+
+
+      
+
+        }); 
+
+</script>
