@@ -19,6 +19,59 @@ body{
 	font-family: 'Open Sans', sans-serif;
 
 }
+.npd{
+	padding:0px;
+}
+.chat-tittle{
+	padding-bottom: 9px!important;
+}
+.chat-square{
+	height: 50vh;
+    padding: 3px 3px;
+    overflow-y: auto;
+}
+.img-profile-panel img{
+	    height: 40px;
+    border-radius: 100%;
+    width: 40px;
+}
+.img-profile-panel{
+	    height: 40px;
+    position: absolute;
+    right: 10px;
+}
+.chat-actions{
+	    background: #a2040d;
+	    text-align:left;
+	    padding: 7px 4px;
+}
+.btn.focus, .btn:focus, .btn:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.chat-actions input{
+	    width: 70%;
+    height: 36px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+.panel-chat .panel-head{
+	background: #a2040d;
+    color: #fff;
+}
+.panel-chat .back-panel{
+
+    color: #fff;
+}
+.chat-actions button{
+	color: #fff;
+    font-weight: 700;
+    text-align: center;
+    width: 27%;
+    /* border: solid 1px #fff; */
+    margin-left: 1%;
+    border-radius: 0px;
+}
 .card{
 	background: #FFF;
 	min-height: 85vh;
@@ -44,14 +97,24 @@ body{
 .m-50{
 	margin-top: 50px;
 }
+.panel-chat{
+	position: relative;
+}
 .panel-head {
 	padding-top: 12px;
 	padding-bottom: 2px;
 	font-weight: 600;
 	background: rgb(248, 248, 248);
-	-webkit-box-shadow: 1px 18px 27px -13px rgba(0,0,0,1);
+	/*-webkit-box-shadow: 1px 18px 27px -13px rgba(0,0,0,1);
 	-moz-box-shadow: 1px 18px 27px -13px rgba(0,0,0,1);
 	box-shadow: 1px 12px 27px -16px rgba(0,0,0,1);
+	*/
+	  -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.12),
+                      0 1px 2px 0 rgba(0,0,0,.24);
+  -moz-box-shadow:    0 1px 3px 0 rgba(0,0,0,.12),
+                      0 1px 2px 0 rgba(0,0,0,.24);
+  box-shadow:         0 1px 3px 0 rgba(0,0,0,.12),
+                      0 1px 2px 0 rgba(0,0,0,.24);
 }
 .back-panel{
 	width: auto;
@@ -121,6 +184,82 @@ select{
 	border-bottom: solid 1px #000;
 	outline: 0px;
 }
+.card-profile{
+	width: 98%;
+	margin: 12px auto;	
+}
+.card-profile .container{
+	padding-bottom: 10px;
+}
+.circle-clock{
+	    border: solid 3px #a2040d;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    padding-top: 17px;
+    margin: 29px auto;
+}
+.chat-item{
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.12),
+                      0 1px 2px 0 rgba(0,0,0,.24);
+  -moz-box-shadow:    0 1px 3px 0 rgba(0,0,0,.12),
+                      0 1px 2px 0 rgba(0,0,0,.24);
+  box-shadow:         0 1px 3px 0 rgba(0,0,0,.12),
+                      0 1px 2px 0 rgba(0,0,0,.24);
+                      padding: 10px 7px 2px 7px;
+    background: rgb(248, 248, 248);
+
+}
+.chat-item img{
+	    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    float: left;
+}
+.chat-item p{
+	    text-align: left;
+    margin-left: 50px;
+}
+
+.shadow-material {
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.12),
+                      0 1px 2px 0 rgba(0,0,0,.24);
+  -moz-box-shadow:    0 1px 3px 0 rgba(0,0,0,.12),
+                      0 1px 2px 0 rgba(0,0,0,.24);
+  box-shadow:         0 1px 3px 0 rgba(0,0,0,.12),
+                      0 1px 2px 0 rgba(0,0,0,.24);
+}
+.chat-msg-left{
+	width: 70%;
+    background: #f8f8f8;
+    text-align: left;
+    padding: 6px 20px;
+    float: left;
+    margin-top: 8px;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.12),
+                      0 1px 2px 0 rgba(0,0,0,.24);
+  -moz-box-shadow:    0 1px 3px 0 rgba(0,0,0,.12),
+                      0 1px 2px 0 rgba(0,0,0,.24);
+  box-shadow:         0 1px 3px 0 rgba(0,0,0,.12),
+                      0 1px 2px 0 rgba(0,0,0,.24);
+                          border-radius: 12px 12px 12px 0px;
+}
+.chat-msg-right{
+	    background: #f8f8f8;
+    padding: 8px 20px;
+    width: 70%;
+    float: right;
+    margin-top: 8px;
+    text-align: right;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.12),
+                      0 1px 2px 0 rgba(0,0,0,.24);
+  -moz-box-shadow:    0 1px 3px 0 rgba(0,0,0,.12),
+                      0 1px 2px 0 rgba(0,0,0,.24);
+  box-shadow:         0 1px 3px 0 rgba(0,0,0,.12),
+                      0 1px 2px 0 rgba(0,0,0,.24);
+                          border-radius: 12px 12px 0px 12px;
+}
+
 
 /*Tablet*/
 @media screen(max-width: 1024px) {

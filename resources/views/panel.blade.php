@@ -3,8 +3,9 @@
 @section('principal')
 <style>
 	body{
-		height: 100vh;
+		min-height: 100vh;
 		background: url(/imgs/pattern-red.jpg);
+		height: 100vh;
 	}
 </style>
 <section id="principal">
@@ -15,12 +16,12 @@
 				<form action="/request-confirm" method="get">
 					<div id="contenido-1">
 						<img src="/imgs/tentazionelogo.png" alt="" class="img-responsive centrado">
-						<button id="rqs-date" class="btn btn-tentazione text-uppercase m-50">Request a date</button>	
+						<button type="button" id="rqs-date" class="btn btn-tentazione text-uppercase m-50">Request a date</button>	
 					</div>
 					<div id="contenido-2" style="display: none">
 						<div class="container full">
 							<div class="row">
-								<div class="back-panel"><button id="bk-1" class="btn btn-flat-tran"><span class="glyphicon glyphicon-menu-left " aria-hidden="true"></span></button></div>
+								<div class="back-panel"><button type="button" id="bk-1" class="btn btn-flat-tran"><span class="glyphicon glyphicon-menu-left " aria-hidden="true"></span></button></div>
 								<div class="col-xs-12 panel-head text-center c-r">
 									<p class="text-center">Request (1/6)</p>
 								</div>
@@ -43,7 +44,7 @@
 									</div>
 
 									<div class="col-xs-12 text-center m-tp-20">
-										<button id="btn-next-1" class="btn btn-tentazione btn-block" style="display: none">Next</button>
+										<button type="button" id="btn-next-1" class="btn btn-tentazione btn-block" style="display: none">Next</button>
 									</div>
 								</div>
 							</div>
@@ -53,7 +54,7 @@
 					<div id="contenido-3" style="display: none">
 						<div class="container full">
 							<div class="row">
-								<div class="back-panel"><button id="bk-2" class="btn btn-flat-tran"><span class="glyphicon glyphicon-menu-left " aria-hidden="true"></span></button></div>
+								<div class="back-panel"><button type="button" id="bk-2" class="btn btn-flat-tran"><span class="glyphicon glyphicon-menu-left " aria-hidden="true"></span></button></div>
 								<div class="col-xs-12 panel-head text-center c-r">
 									<p class="text-center">Request (2/6)</p>
 								</div>
@@ -71,7 +72,7 @@
 									</div>
 
 									<div class="col-xs-12 text-center m-tp-20">
-										<button id="btn-next-2" class="btn btn-tentazione btn-block" >Next</button>
+										<button type="button" id="btn-next-2" class="btn btn-tentazione btn-block" >Next</button>
 									</div>
 								</div>
 							</div>
@@ -81,7 +82,7 @@
 					<div id="contenido-4" style="display: none">
 						<div class="container full">
 							<div class="row">
-								<div class="back-panel"><button id="bk-3" class="btn btn-flat-tran"><span class="glyphicon glyphicon-menu-left " aria-hidden="true"></span></button></div>
+								<div class="back-panel"><button type="button" id="bk-3" class="btn btn-flat-tran"><span class="glyphicon glyphicon-menu-left " aria-hidden="true"></span></button></div>
 								<div class="col-xs-12 panel-head text-center c-r">
 									<p class="text-center">Request (3/6)</p>
 								</div>
@@ -98,7 +99,7 @@
 										<input type="text" name="hora-inicio" class="timepicker"/>
 									</div>
 									<div class="col-xs-12 text-center m-tp-160">
-										<button id="btn-next-3" class="btn btn-tentazione btn-block" >Next</button>
+										<button type="button" id="btn-next-3" class="btn btn-tentazione btn-block" >Next</button>
 									</div>
 								</div>
 							</div>
@@ -108,7 +109,7 @@
 					<div id="contenido-5" style="display: none">
 						<div class="container full">
 							<div class="row">
-								<div class="back-panel"><button id="bk-4" class="btn btn-flat-tran"><span class="glyphicon glyphicon-menu-left " aria-hidden="true"></span></button></div>
+								<div class="back-panel"><button type="button" id="bk-4" class="btn btn-flat-tran"><span class="glyphicon glyphicon-menu-left " aria-hidden="true"></span></button></div>
 								<div class="col-xs-12 panel-head text-center c-r">
 									<p class="text-center">Request (4/6)</p>
 								</div>
@@ -126,7 +127,7 @@
 										<input id="duracion-tp" class="time-range-custom m-tp-20" type="range" name="duracion" value="1" min="1" max="10">
 									</div>
 									<div class="col-xs-12 text-center m-tp-160">
-										<button id="btn-next-4" class="btn btn-tentazione btn-block" >Next</button>
+										<button type="button" id="btn-next-4" class="btn btn-tentazione btn-block" >Next</button>
 									</div>
 								</div>
 							</div>
@@ -136,7 +137,7 @@
 					<div id="contenido-6" style="display: none">
 						<div class="container full">
 							<div class="row">
-								<div class="back-panel"><button id="bk-5" class="btn btn-flat-tran"><span class="glyphicon glyphicon-menu-left " aria-hidden="true"></span></button></div>
+								<div class="back-panel"><button type="button" id="bk-5" class="btn btn-flat-tran"><span class="glyphicon glyphicon-menu-left " aria-hidden="true"></span></button></div>
 								<div class="col-xs-12 panel-head text-center c-r">
 									<p class="text-center">Request (5/6)</p>
 								</div>
@@ -158,7 +159,7 @@
 										<div class="radio-personalizado" id="rango3-radio">More than 70US</div>
 									</div>
 									<div class="col-xs-12 text-center m-tp-20" ">
-										<button style="display: none;" id="btn-next-5" class="btn btn-tentazione btn-block" >Next</button>
+										<button type="button" style="display: none;" id="btn-next-5" class="btn btn-tentazione btn-block" >Next</button>
 									</div>
 								</div>
 							</div>
@@ -168,7 +169,7 @@
 					<div id="contenido-7" style="display: none">
 						<div class="container full">
 							<div class="row">
-								<div class="back-panel"><button id="bk-6" class="btn btn-flat-tran"><span class="glyphicon glyphicon-menu-left " aria-hidden="true"></span></button></div>
+								<div class="back-panel"><button type="button" id="bk-6" class="btn btn-flat-tran"><span class="glyphicon glyphicon-menu-left " aria-hidden="true"></span></button></div>
 								<div class="col-xs-12 panel-head text-center c-r">
 									<p class="text-center">Request (6/6)</p>
 								</div>
