@@ -26,3 +26,10 @@ Route::get('/test', function(){
 Route::get('/test2', function(){
 	return view('confirm');
 });
+Route::get('/test3', function(){
+	return view('provedores');
+});
+Route::get('/test4', function(){
+	return view('chat');
+});
+

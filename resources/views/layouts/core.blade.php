@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="/css/wickedpicker.css">
 	<script src="/js/wickedpicker.js"></script>
 	<script src="/js/jquery.countdown.min.js"></script>
+	
 </head>
 <body>
 
