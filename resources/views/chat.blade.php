@@ -24,13 +24,20 @@
 						<div class="body-panel">
 							<div class="container full npd">
 								<!-- Si no Tiene chats activos -->
-								<div class="col-xs-12 text-center m-tp-20" style="display: none;">
-									You don't have active chats
+								<div id="panel-historial" class="col-xs-12 text-center" >
+									<p style="display: none;" class="m-tp-20">You don't have active chats	</p>
+
+									<div class="list-chats">
+										<div class="chat-item m-tp-20" onclick="openChat(1)">
+											<img src="/imgs/profile-pictures/model-face.jpeg" alt="">
+											<p> <strong>Elisha Cutberth:</strong> <br>	Este es el ultimo mensaje</p>
+										</div>
+									</div>
 								</div>
 								<!-- Si tiene chats -->
-								<div class="panel-chat shadow-material">
+								<div id="panel-chat-activo" class="panel-chat shadow-material" style="display: none;">
 									<div class="container full npd">
-									<div class="back-panel"><button type="button" id="bk-3" class="btn btn-flat-tran"><span class="glyphicon glyphicon-menu-left " aria-hidden="true"></span></button></div>
+									<div class="back-panel"><button type="button" id="bk-chat" class="btn btn-flat-tran"><span class="glyphicon glyphicon-menu-left " aria-hidden="true"></span></button></div>
 									<div class="img-profile-panel"><img class="" src="/imgs/profile-pictures/model-face.jpeg" alt=""></div>
 										<div class="chat-tittle panel-head c-r text-center">
 
@@ -73,7 +80,19 @@
 	</div>
 	<script>
 	// Funcion para bajar el scroll
-		$('#chat-square').animate({ scrollTop: $('#chat-square').prop("scrollHeight")}, 1000);;
+		$('#chat-square').animate({ scrollTop: $('#chat-square').prop("scrollHeight")}, 1000);
+
+		// funcion para abrir chats segun el id
+		function openChat(identificador){
+				$('#panel-historial').hide();
+				$('#panel-chat-activo').fadeIn();
+				$('#chat-square').animate({ scrollTop: $('#chat-square').prop("scrollHeight")}, 1000);
+		}
+
+		$('#bk-chat').click(function(){
+				$('#panel-chat-activo').hide();	
+			$('#panel-historial').fadeIn();
+		});
 	</script>
 </section>
 @stop
