@@ -51,7 +51,7 @@
 								4/5 <br>
 								<strong>Age</strong>
 								21 <br>
-								<button type="button" class="btn btn-tentazione m-tp-20" onclick="location.href='chat'">Start Chat</button>
+								<button type="button" class="btn btn-tentazione m-tp-20" onclick="window.open('chat')">Start Chat</button>
 
 							</p>
 						</div>					

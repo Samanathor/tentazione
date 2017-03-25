@@ -32,11 +32,14 @@ function FriendlyChat() {
   this.signInButton = document.getElementById('sign-in');
   this.signOutButton = document.getElementById('sign-out');
   this.signInSnackbar = document.getElementById('must-signin-snackbar');
-
+this.txtEmail = document.getElementById('txtEmail');
+this.txtPassword = document.getElementById('txtPassword');
+this.createUserPass = document.getElementById('create-User');
   // Saves message on form submit.
   this.messageForm.addEventListener('submit', this.saveMessage.bind(this));
   this.signOutButton.addEventListener('click', this.signOut.bind(this));
   this.signInButton.addEventListener('click', this.signIn.bind(this));
+  this.createUserPass.addEventListener('click', this.createUser.bind(this));
 
   // Toggle for the button.
   var buttonTogglingHandler = this.toggleButton.bind(this);
@@ -88,7 +91,7 @@ FriendlyChat.prototype.saveMessage = function(e) {
     this.messagesRef.push({
       name: currentUser.displayName,
       text: this.messageInput.value,
-      photoUrl: currentUser.photoURL || '/chat/images/profile_placeholder.png'
+      photoUrl: currentUser.photoURL || '/imgs/profile_placeholder.png'
     }).then(function() {
       // Clear message text field and SEND button state.
       FriendlyChat.resetMaterialTextfield(this.messageInput);
@@ -138,7 +141,7 @@ FriendlyChat.prototype.saveImageMessage = function(event) {
     this.messagesRef.push({
       name: currentUser.displayName,
       imageUrl: FriendlyChat.LOADING_IMAGE_URL,
-      photoUrl: currentUser.photoURL || '/chat/images/profile_placeholder.png'
+      photoUrl: currentUser.photoURL || '/imgs/profile_placeholder.png'
     }).then(function(data) {
       // Upload the image to Firebase Storage.
       this.storage.ref(currentUser.uid + '/' + Date.now() + '/' + file.name)
@@ -156,10 +159,39 @@ FriendlyChat.prototype.saveImageMessage = function(event) {
 
 // Signs-in Friendly Chat.
 FriendlyChat.prototype.signIn = function() {
-  // Sign in Firebase using popup auth and Google as the identity provider.
-  var provider = new firebase.auth.GoogleAuthProvider();
-  this.auth.signInWithPopup(provider);
+
+  const email=txtEmail.value;
+const pass=txtPassword.value;
+const auth=firebase.auth();
+
+//funcion Para inicializar con email y password
+const promise=this.auth.signInWithEmailAndPassword(email,pass);
+
+//Este promise se usa para detectar errores 
+promise.catch(e => console.log(e.message));
 };
+
+
+
+FriendlyChat.prototype.createUser = function() {
+    const email=txtEmail.value;
+    const pass=txtPassword.value;
+    const auth=firebase.auth();
+    const promise=auth.createUserWithEmailAndPassword(email,pass);
+    promise.catch(e => console.log(e.message));
+};
+
+
+// btnEntrar.addEventListener('click',e =>{
+
+
+
+// });
+
+
+
+
+
 
 // Signs-out of Friendly Chat.
 FriendlyChat.prototype.signOut = function() {
@@ -175,7 +207,7 @@ FriendlyChat.prototype.onAuthStateChanged = function(user) {
     var userName = user.displayName;
 
     // Set the user's profile pic and name.
-    this.userPic.style.backgroundImage = 'url(' + (profilePicUrl || '/chat/images/profile_placeholder.png') + ')';
+    this.userPic.style.backgroundImage = 'url(' + (profilePicUrl || '/imgs/profile_placeholder.png') + ')';
     this.userName.textContent = userName;
 
     // Show user's profile and sign-out button.

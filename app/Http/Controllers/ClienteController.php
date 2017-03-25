@@ -15,7 +15,7 @@ class ClienteController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -25,9 +25,9 @@ class ClienteController extends Controller
      */
     public function createCita(Request $request)
     {
-      $idusuario = Auth::user()->id; 
         if (Auth::check())
         {
+      $idusuario = Auth::user()->id; 
 
             $user = User::find($idusuario);
              // return $user->citas;
@@ -62,14 +62,14 @@ class ClienteController extends Controller
                      ,'ciudad' =>$request->ciudad   
                     ]
                     );         
-                     return 1;
+                return 1;
 
             } 
 
         }
         else
         {
-    return 0;
+            return 0;
 
            }
    

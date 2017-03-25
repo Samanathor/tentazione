@@ -231,11 +231,20 @@
                    ciudad:$('#select-city').val(),
                  },
                success: function(data) {
+               	if(data==1)
+               	{
+
                 location.href="completado";
                 console.log(data);
+    	           	}
+    	           	else
+    	           	{
+                location.href="/";
+    	           	}
                 
                },
                error: function (data) {
+                location.href="/";
 
                 console.log(data);          
             }

@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "name": "Friendly Chat",
-  "launch_path": "/index.html",
+  "launch_path": "/index.blade.php",
   "description": "Chat with friends using Firebase 2.0",
   "developer": {
     "name": "Google inc.",

@@ -4,10 +4,10 @@
 	<meta charset="UTF-8">
 	<title>Tentazione</title>
    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
-   <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
-   <link rel="stylesheet" type="text/css" href="css/estilos.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="../node_modules/sweetalert/dist/sweetalert.css">
+   <link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
+   <link rel="stylesheet" type="text/css" href="/css/estilos.css">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/node_modules/sweetalert/dist/sweetalert.css">
 	<link href="https://fonts.googleapis.com/css?family=Slabo+27px|Montserrat|Roboto|Open+Sans|Open+Sans+Condensed:300" rel="stylesheet">
  
 </head>
@@ -33,6 +33,17 @@
 							<li class="active"><a href="#">HOME <span class="sr-only">(current)</span></a></li>
 							<li><a href="#">BLOG <span class="sr-only">(current)</span></a></li>
 							<li><a href="#">TEAM <span class="sr-only">(current)</span></a></li>
+              <li>
+                    <a href="{{ url('/logout') }}"
+                        onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
 						</ul> 
 					</div>
 				</div>
@@ -70,25 +81,27 @@
 
 
       <div class="login" id="loginIn">
-        <form>
-{{csrf_field()}}
+        <form name="FORMA" id="FORMA" method="POST" action="{{ url('/login') }}">
+          {{ csrf_field() }}
+
           <div class="form-group">
             <label class="style-lab" for="exampleInputEmail1"><i class="fa fa-user" aria-hidden="true"></i> PHONE NUMBER OR EMAIL</label>
-            <input type="email" class="style-in form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="email" class="style-in form-control" name="email" id="email" aria-describedby="emailHelp">
           </div>
 
           <div class="form-group">
             <label for="example-password-input" class="style-lab "><i class="fa fa-unlock-alt" aria-hidden="true"></i> PASSWORD</label>
-            <input class="style-in form-control" type="password" value="" id="example-password-input">
+            <input class="style-in form-control" type="password" value="" id="password" name="password">
 
           </div>
           <div class="password-st">
             <a href="" class="style-a">Forgot your password?</a>
           </div>
-          <button class="btn btn-primary style-bt" type="button" id="btnlogin">LOGIN</button>
+          <button class="btn btn-primary style-bt" type="submit" id="btnlogin">LOGIN</button>
           <div class="create-st">
             <a href="#modal1" data-toggle="modal">Create Account</a>
           </div>
+          </form>
       </div>
 
     </section>
@@ -99,7 +112,9 @@
             <div class="modal-body">
                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times-circle" aria-hidden="true" id="closeRegister"></i></button>
                <div class="accountCreate" id="signUp">
-                 <form>
+                 <form name="FORMA2" id="FORMA2" method="post" action="{{ url('/register') }}">
+                                         {{ csrf_field() }}
+
                    <div class="form-group">
                      <label class="style-lab" for="exampleInputEmail1"><i class="fa fa-user" aria-hidden="true"></i> PHONE NUMBER</label>
                      <input type="number" class="style-in form-control" id="txtPhoneNumber" name="txtPhoneNumber" aria-describedby="emailHelp">
@@ -135,7 +150,8 @@
                      Yes, I've read and accept the privacy policy and the terms & conditions.I guarantee that I am at least 18 years old.
                    </label>
                  </div>
-                   <button class="btn btn-primary style-bt" type="button" id="btnSend">SIGN UP</button>
+                   <button class="btn btn-primary style-bt" type="submit" id="btnSend">SIGN UP</button>
+                   </form>
                </div>
             </div>
          </div>
@@ -659,66 +675,7 @@
 
 <script type="text/javascript">
   
-    $(document).ready(function()
-    {
-      // swal("Hola");
-
-      $("#btnSend").click(function()
-      {
-              $.ajax({
-                  url: 'register', //indicamos la ruta donde se genera la hora
-                  dataType: 'json',//indicamos que es de tipo texto plano
-                  type: "POST",
-                  async: false,   //ponemos el parámetro asyn a falso
-                  data: {
-                    _token:$('input[name=_token]').val(),
-                    email:$("#txtEmail").val(),
-                    celular:$("#txtPhoneNumber").val(),
-                    password:$("#txtPassword").val(),
-                    sexo: $('input:radio[name=inputSexo]:checked').val()
-                 },
-               success: function(data) {
-                
-                $("#closeRegister").click();
-                swal("Registro creado correctamente.", "Exitoso");
-                console.log(data);
-                
-               },
-               error: function (data) {
-                swal("Registro creado correctamente.", "Exitoso");
-
-                $("#closeRegister").click();
-                console.log(data);          
-            }
-            }).responseText;
-      }); 
-
-      $("#btnlogin").click(function()
-      {
-
-
-              $.ajax({
-                  url: '{{ url('/login') }}', //indicamos la ruta donde se genera la hora
-                  type: "POST",
-                  data: {
-                      _token:$('input[name=_token]').val(),
-                    email:$("#exampleInputEmail1").val(),
-                    password:$("#example-password-input").val()
-                 },
-               success: function(data) {
-                
-               location.href="test";
-                console.log(data);
-                
-               },
-               error: function (data) {
-
-                console.log(data);          
-            }
-            }).responseText;
-      });
-    }); 
-
+   
 </script>
 </body>
 </html>

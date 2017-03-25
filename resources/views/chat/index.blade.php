@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="/css/custom.css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<link rel="stylesheet" href="/css/wickedpicker.css">
+    <link rel="stylesheet" href="/css/main.css">
+
 	<script src="/js/wickedpicker.js"></script>
 	<script src="/js/jquery.countdown.min.js"></script>
 
@@ -18,7 +20,6 @@
   <meta name="description" content="Learn how to use the Firebase platform on the Web">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chat-Tentazionet</title>
-
   <!-- Disable tap highlight on IE -->
   <meta name="msapplication-tap-highlight" content="no">
 
@@ -47,7 +48,6 @@
 
   <!-- App Styling -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-  <link rel="stylesheet" href="/chat/styles/main.css">
 </head>
 <body>
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -56,18 +56,26 @@
   <header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
     <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
       <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
-        <h3><i class="material-icons">chat_bubble_outline</i> Tentazione-Chat</h3>
+        <h4><i class="material-icons">chat_bubble_outline</i> Tentazione-Chat
+        <br>
+        <span>{{$email}}</span>
+        </h4>
       </div>
       <div id="user-container">
         <div hidden id="user-pic"></div>
-        <button hidden id="sign-out" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
-          Cerrar Sesion
-        </button>
 
 
-        <button hidden id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
-          <i class="material-icons">account_circle</i>Sign-in with Google
-        </button>
+
+    <button hidden id="sign-out" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+      Cerrar Sesion
+    </button>
+
+<button hidden id="create-User">
+  Crear
+</button>
+    
+
+       
       </div>
     </div>
   </header>
@@ -80,7 +88,10 @@
 						<div class="row">
 
 							<div class="col-xs-12 panel-head text-center c-r">
-								<p class="text-center">Active Chat</p>
+								<p class="text-center" id="sign-in">Active Chat</p>
+
+                <input type="hidden" id="txtEmail" name="txtEmail" placeholder="email" value="{{$email}}">
+    <input type="hidden" id="txtPassword" name="txtPassword" placeholder="Contraseña" value="{{$password}}">
 							</div>
 						</div>
 						<div class="body-panel">
@@ -92,7 +103,7 @@
 									<div class="list-chats">
 										<div class="chat-item m-tp-20" onclick="openChat(1)">
 											<img src="/imgs/profile-pictures/model-face.jpeg" alt="">
-											<p> <strong><span ></span></strong> <br>	Este es el ultimo mensaje</p>
+											<p> <strong><span >{{$email}}</span></strong> <br>	Este es el ultimo mensaje</p>
 										</div>
 									</div>
 								</div>
@@ -160,24 +171,30 @@
 <script>
   // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyDpgGyKV-jMrStnoKMg6tlbLVxpOSFbQeU",
-    authDomain: "proyecto-inicial-b526d.firebaseapp.com",
-    databaseURL: "https://proyecto-inicial-b526d.firebaseio.com",
-    storageBucket: "proyecto-inicial-b526d.appspot.com",
-    messagingSenderId: "252216761084"
+    apiKey: "AIzaSyBLp4mFNS-LcVNM9xH8kzI0KU8QqTv7ZgI",
+    authDomain: "tentazione-96f1b.firebaseapp.com",
+    databaseURL: "https://tentazione-96f1b.firebaseio.com",
+    storageBucket: "tentazione-96f1b.appspot.com",
+    messagingSenderId: "293441129913"
   };
   firebase.initializeApp(config);
 </script>
 
 
-<script src="/chat/scripts/main.js"></script>
+<script src="/js/main.js"></script>
 
 
 <script src="/js/core.js"></script>
-   <script src="js/jquery.js"></script>
-   	<script src="js/bootstrap.min.js"></script>
-	<script src="js/app.js"></script>
+   <script src="/js/jquery.js"></script>
+   	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/app.js"></script>
 <script>
+
+$(document).ready(function()
+{
+  $("#create-User").click();
+  $("#sign-in").click();
+});
 	// Funcion para bajar el scroll
 		$('#chat-square').animate({ scrollTop: $('#chat-square').prop("scrollHeight")}, 1000);
 

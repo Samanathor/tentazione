@@ -20,17 +20,54 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 
-Route::get('/test', function(){
+Route::get('/citas', function(){
+
+	 if (Auth::check())
+        {
 	return view('panel');
+		}
+		else
+		{
+    return view('index');
+		}	
 });
 Route::get('/completado', function(){
+	 if (Auth::check())
+        {
 	return view('confirm');
+		}
+		else
+		{
+    return view('index');
+		}
 });
 Route::get('/proveedores', function(){
+	 if (Auth::check())
+        {
 	return view('provedores');
+		}
+		else
+		{
+    return view('index');
+		}
 });
-Route::get('/test4', function(){
-	return view('chat');
+Route::get('/chat', function(){
+	 if (Auth::check())
+        {
+
+      $emailuser = Auth::user()->email; 
+      $passwuser = Auth::user()->password; 
+
+	return view('chat.index', [
+    	'email' => $emailuser,
+    	'password' => $passwuser,
+		]);
+
+		}
+		else
+		{
+    return view('index');
+		}
 });
 
 Route::post('/anadir-cita', 'ClienteController@createCita');

@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -49,30 +49,34 @@ class RegisterController extends Controller
     {
 
         return Validator::make($data, [
-            // 'name' => 'required|max:255',
-            'celular' => 'required|max:15',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6',
-            'sexo' => 'required|max:15',
+
+            'txtPhoneNumber' => 'required|max:10',
+            'txtEmail' => 'required|email|max:255|unique:users',
+            'txtPassword' => 'required|min:6',
+            'inputSexo' => 'required|max:15',
         ]);
     }
 
-    /**1
+    /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
      * @return User
      */
+    
     protected function create(array $data)
     {
 
         return User::create([
 
             'api_token' =>  $data['_token'],
-            'celular' => $data['celular'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'sexo' => $data['sexo']
+            'celular' => $data['txtPhoneNumber'],
+            'email' => $data['txtEmail'],
+            'password' => bcrypt($data['txtPassword']),
+            'sexo' => $data['inputSexo']
         ]);
+
+
+        
     }
 }
