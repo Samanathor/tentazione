@@ -30,6 +30,6 @@ class User extends Authenticatable
 
      public function citas(){
         return $this->belongsToMany('\App\Cita','user_citas')
-            ->withPivot('cita_id','token');
+            ->withPivot('cita_id','token','descripcion','duracion','ciudad','rango_pago','hora_inicio');
     }
 }

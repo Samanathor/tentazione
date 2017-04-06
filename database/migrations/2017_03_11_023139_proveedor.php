@@ -15,6 +15,9 @@ class Proveedor extends Migration
     {
         Schema::create('proveedor', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('reputacion');
+            $table->integer('edad');
             $table->string('cedula');
             $table->string('idiomas');
             $table->string('certificado_medico');

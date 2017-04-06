@@ -41,16 +41,21 @@ Route::get('/completado', function(){
     return view('index');
 		}
 });
-Route::get('/proveedores', function(){
+
+Route::get('/chatFront', function(){
 	 if (Auth::check())
         {
-	return view('provedores');
+	return view('chat');
 		}
 		else
 		{
     return view('index');
 		}
 });
+
+
+
+Route::get('/proveedores','ProveedorController@allProveedores');
 Route::get('/chat', function(){
 	 if (Auth::check())
         {
@@ -70,6 +75,7 @@ Route::get('/chat', function(){
 		}
 });
 
-Route::post('/anadir-cita', 'ClienteController@createCita');
+Route::post('anadir-cita', 'ClientesController@createCita');
+Route::post('update-horainicio', 'ClientesController@horainicio');
 
 

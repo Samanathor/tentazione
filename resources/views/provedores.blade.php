@@ -38,45 +38,29 @@
 					</div>
 					<!-- SI TIENE REQUEST ACTIVAS  -->
 					<!-- Con FOREACH AQUI -->
+					@foreach($TodosProveedores as $proveedor)
+					 
 					<div class="card-profile m-tp-20 ">
 					<div class="container full shadow-material">
 						<div class="col-xs-6">
-							<img src="/imgs/profile-pictures/model-face.jpeg" alt="" class="img-responsive">
+							<img src="/imgs/profile-pictures/{{$proveedor->cedula}}.jpg" alt="" class="img-responsive">
 						</div>	
 						<div class="col-xs-6">
 							<p class="description-profile">
 								<strong>Name</strong><br>
-								Elisha Cutberth <br>
+								{{$proveedor->name}} <br>
 								<strong>Reputation</strong><br>
-								4/5 <br>
+								{{$proveedor->reputacion}}<br>
 								<strong>Age</strong>
-								21 <br>
+								{{$proveedor->edad}}<br>
 								<button type="button" class="btn btn-tentazione m-tp-20" onclick="window.open('chat')">Start Chat</button>
 
 							</p>
 						</div>					
 					</div>
 					</div>	
-					<!-- Cada PERSONA SE REPITE HASTA AQUI -->
-					<div class="card-profile m-tp-20">
-					<div class="container full shadow-material">
-						<div class="col-xs-6">
-							<img src="/imgs/profile-pictures/model-face.jpeg" alt="" class="img-responsive">
-						</div>	
-						<div class="col-xs-6">
-							<p class="description-profile">
-								<strong>Name</strong><br>
-								Elisha Cutberth <br>
-								<strong>Reputation</strong><br>
-								4/5 <br>
-								<strong>Age</strong>
-								21 <br>
-								<button type="button" class="btn btn-tentazione m-tp-20">Start Chat</button>
-
-							</p>
-						</div>					
-					</div>
-					</div>	
+					@endforeach
+					
 				</div>
 			</div>
 		</div>

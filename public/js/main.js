@@ -63,6 +63,17 @@ FriendlyChat.prototype.initFirebase = function() {
   this.storage = firebase.storage();
   // Initiates Firebase auth and listen to auth state changes.
   this.auth.onAuthStateChanged(this.onAuthStateChanged.bind(this));
+
+
+  const email=txtEmail.value;
+    const pass=txtPassword.value;
+    const auth=firebase.auth();
+    console.log(auth);
+    if(!auth.email)
+    {
+    const promise=auth.createUserWithEmailAndPassword(email,pass);
+    promise.catch(e => console.log(e.message));
+    }
 };
 
 // Loads chat messages history and listens for upcoming ones.
@@ -255,7 +266,7 @@ FriendlyChat.resetMaterialTextfield = function(element) {
 
 // Template for messages.
 FriendlyChat.MESSAGE_TEMPLATE =
-    '<div class="message-container">' +
+    '<div class="chat-msg-right">' +
       '<div class="spacing"><div class="pic"></div></div>' +
       '<div class="message"></div>' +
       '<div class="name"></div>' +

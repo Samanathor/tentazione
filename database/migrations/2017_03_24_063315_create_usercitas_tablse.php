@@ -20,6 +20,7 @@ class CreateUsercitasTablse extends Migration
             $table->integer('duracion')->nullable();
             $table->double('rango_pago')->nullable();
             $table->string('ciudad')->nullable();
+            $table->string('token')->nullable();
 
              $table->integer('cita_id')->unsigned();
             $table->integer('user_id')->unsigned();

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\User;
 
+
 class ClienteController extends Controller
 {
     /**
@@ -23,20 +24,27 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createCita(Request $request)
+    public function horainicio(Request $request)
     {
+        return $request;
+    }   
+
+     public function createCita(Request $request)
+    {
+
+        // return $request;
         if (Auth::check())
         {
-      $idusuario = Auth::user()->id; 
+            $idusuario = Auth::user()->id; 
 
             $user = User::find($idusuario);
-             // return $user->citas;
-            foreach($user->citas as $cita)
-            {
-                $tokenexiste=$cita->pivot->token;
-            }
+            // return $user;
+            // foreach($user->citas as $cita)
+            // {
+            //     $tokenexiste=$cita->pivot->token;
+            // }
 
-            if(!isset($tokenexiste))
+            // if(!isset($tokenexiste))
             {
                 DB::table('user_citas')->insert(
                     ['cita_id' => $request->valor_cita,'token' => $request->_token, 'user_id' =>$idusuario,
@@ -47,10 +55,12 @@ class ClienteController extends Controller
                      ,'ciudad' =>$request->ciudad   
                     ]
                 );
-                                     return 1;
+
+              
+                 return 1;
 
             }
-            else
+           /* else
             {
                 DB::table('user_citas')
                 ->where('token',$request->_token)
@@ -64,7 +74,7 @@ class ClienteController extends Controller
                     );         
                 return 1;
 
-            } 
+            } */
 
         }
         else
@@ -74,6 +84,8 @@ class ClienteController extends Controller
            }
    
     }
+
+
 
     
 }

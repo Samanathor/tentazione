@@ -216,39 +216,39 @@
       $("#btn-next-6").click(function () {	 
 			var valor_cita=$('input:radio[name=date]:checked').val();
 
-				$.ajax({
-                  url: 'anadir-cita', //indicamos la ruta donde se genera la hora
-                  dataType: 'json',//indicamos que es de tipo texto plano
-                  type: "POST",
-                  async: false,   //ponemos el parámetro asyn a falso
-                  data: {
-                      _token:$('input[name=_token]').val(),
-                   valor_cita:valor_cita,
-                   descripcion:$("#descripcion").val(),
-                   hora_inicio:$("#hora_inicio").val(),
-                   duracion:$("#duracion-tp").val(),
-                   rango_pago:$('input:radio[name=money]:checked').val(),
-                   ciudad:$('#select-city').val(),
-                 },
-               success: function(data) {
-               	if(data==1)
-               	{
+					$.ajax({
+	                  url: 'anadir-cita', //indicamos la ruta donde se genera la hora
+	                  dataType: 'json',//indicamos que es de tipo texto plano
+	                  type: "POST",
+	                  async: false,   //ponemos el parámetro asyn a falso
+	                  data: {
+	                   _token:$('input[name=_token]').val(),
+	                   valor_cita:valor_cita,
+	                   descripcion:$("#descripcion").val(),
+	                   hora_inicio:$("#hora_inicio").val(),
+	                   duracion:$("#duracion-tp").val(),
+	                   rango_pago:$('input:radio[name=money]:checked').val(),
+	                   ciudad:$('#select-city').val()
+	                 },
+	               success: function(data) {
+	                console.log(data);
+	               	if(data==1)
+	               	{
 
-                location.href="completado";
-                console.log(data);
-    	           	}
-    	           	else
-    	           	{
-                location.href="/";
-    	           	}
-                
-               },
-               error: function (data) {
-                location.href="/";
+	                location.href="completado";
+	    	           	}
+	    	           	else
+	    	           	{
+	                // location.href="/";
+	    	           	}
+	                
+	               },
+	               error: function (data) {
+	                // location.href="/";
 
-                console.log(data);          
-            }
-            }).responseText;	
+	                console.log(data);          
+	            }
+	            }).responseText;	
 			});
 
 
