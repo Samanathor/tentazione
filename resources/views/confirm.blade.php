@@ -36,7 +36,8 @@
 										</div>
 
 									</div>
-<input type="hidden" name="HoraIni" id="HoraIni">
+<input type="hidden" name="HoraIni" id="HoraIni" value="{{$FechaCreacion}}">
+<input type="hidden" name="id_cita" id="id_cita" value="{{$id_cita}}">
 									<div class="col-xs-12 text-center m-tp-20">
 										<button id="btn-next-1" class="btn btn-tentazione btn-block" style="display: none">Next</button>
 									</div>
@@ -52,55 +53,42 @@
 
 <script>
 
-var fechaAct = new Date();
-var ano = fechaAct.getFullYear();
-var mes = fechaAct.getMonth()+1;
-var dia = fechaAct.getDate();
-var hora = fechaAct.getHours();
-var minutos = fechaAct.getMinutes();
-var segundos = fechaAct.getSeconds();
-fechaAct.setHours(hora + 1);
+var fechaAct=$("#HoraIni").val();
 
-var horahoy=fechaAct.getHours()+":"+minutos;
-/*variable para el apóstrofe de am o pm*/
-dn = "A.M"
-if (hora > 12) {
-dn = "P.M"
-hora = hora - 12
-}
-
-var fechahoy=ano+"/"+mes+"/"+dia;
-
-	$("#countdown-timer").countdown(fechahoy+' '+horahoy, function(event) {
+	$("#countdown-timer").countdown(fechaAct, function(event) {
     $(this).text(
       event.strftime('%M:%S')
     );
-		$("#HoraIni").val(event.strftime('%M:%S'));
   });
 
-	$(document).ready(function()
-	{
-		$.ajax({
-          url: 'update-horainicio', //indicamos la ruta donde se genera la hora
-          dataType: 'json',//indicamos que es de tipo texto plano
-          type: "POST",
-          async: false,   //ponemos el parámetro asyn a falso
-          data: {
-           _token:$('input[name=_token]').val(),
-          
-         },
-       success: function(data) {
-        console.log(data.HoraIni+"-------"+horahoy+' '+dn);
-        // if(data.HoraIni==horahoy+' '+dn);
-       
-        
-       },
-       error: function (data) {
-        // location.href="/";
 
-        console.log(data);          
-    }
-    }).responseText;	
-	});
+function peticionProveedor(){
+
+       $.ajax({
+	      url: 'verificar-proveedor', //indicamos la ruta donde se genera la hora
+	      dataType: 'json',//indicamos que es de tipo texto plano
+	      type: "POST",
+	      async: false,   //ponemos el parámetro asyn a falso
+	      data: {
+           _token:$('input[name=_token]').val(),
+           id_cita:$('#id_cita').val()
+
+	     },
+	   success: function(data) {
+    	console.log(data.proveedor_postulado);
+		   	if(data.proveedor_postulado!="")
+		   	{
+		   		location.href="proveedores";
+			}
+	   },
+	   error: function (data) {
+
+	    console.log(data);          
+	}
+	}).responseText;		
+}
+setInterval(function(){ peticionProveedor(); }, 2000);
+
+
 	</script>
 @stop

@@ -13,15 +13,15 @@ class UserProveedor extends Migration
      */
     public function up()
     {
-        Schema::create('user_proveedor', function (Blueprint $table) {
+        Schema::create('user_cita_proveedor', function (Blueprint $table) {
             $table->increments('id');
 
-             $table->integer('user_id')->unsigned();
+             $table->integer('usercita_id')->unsigned();
             $table->integer('proveedor_id')->unsigned();
 
-            $table  ->foreign('user_id')
+            $table  ->foreign('usercita_id')
                     ->references('id')
-                    ->on('users')
+                    ->on('user_citas')
                     ->onUpdate("cascade")
                     ->onDelete("cascade");
 

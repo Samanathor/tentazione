@@ -22,6 +22,7 @@ class CreateUsercitasTablse extends Migration
             $table->string('ciudad')->nullable();
             $table->string('token')->nullable();
 
+            $table->integer('proveedor_id')->unsigned();
              $table->integer('cita_id')->unsigned();
             $table->integer('user_id')->unsigned();
 
@@ -34,6 +35,12 @@ class CreateUsercitasTablse extends Migration
             $table  ->foreign('user_id')
                     ->references('id')
                     ->on('users')
+                    ->onUpdate("cascade")
+                    ->onDelete("cascade");
+
+                    $table  ->foreign('proveedor_id')
+                    ->references('id')
+                    ->on('proveedores')
                     ->onUpdate("cascade")
                     ->onDelete("cascade");
 

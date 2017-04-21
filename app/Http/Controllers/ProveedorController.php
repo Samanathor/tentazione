@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Proveedor;
+use App\User;
 use Auth;
+use App\User_cita;
+use DB;
 
 class ProveedorController extends Controller
 {
@@ -13,6 +16,23 @@ class ProveedorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function postularse()
+    {
+
+        $todoscita=User_cita::all();
+        // return $todoscita;
+        $data=array('todocitas' => $todoscita );
+        return view("proveedores.postularproveedor")->with($data);
+    }
+
+    public function postularse_proveedor(Request $request)
+    {
+        DB::table('user_cita_proveedor')->insert(
+            ['usercita_id' => $request->id_cita, 'proveedor_id' => 1]
+        );
+    }
+
     public function index()
     {
         //
@@ -82,18 +102,46 @@ class ProveedorController extends Controller
     public function destroy($id)
     {
         //
-    }
+    } 
 
+    public function verificarproveedor(Request $request)
+    {
+        // $Cita=User_cita::find($request->id_cita);
+
+        $Proveedor_postulado= DB::table('user_cita_proveedor')
+            ->select('usercita_id', 'proveedor_id')
+            ->where('usercita_id', '=', $request->id_cita)->get();
+
+            foreach ($Proveedor_postulado as $postulado) {
+                $ProveedorPostulado[]=$postulado->proveedor_id;
+            }
+        return array("proveedor_postulado"=>$ProveedorPostulado);
+    }
 
     public function allProveedores(Request $request)
     {
-        // return $request;
         if (Auth::check())
         {
-        $proveedores=Proveedor::all();
-                // return   $proveedores;   
+
+            $idusuario = Auth::user()->id;
+            $user = User::find($idusuario); 
+            $Usuarios_todo_Ordenados=$user->citas()->orderBy('user_citas.created_at', 'asc')->get();
+
+       foreach ($Usuarios_todo_Ordenados as $usuariotodo) {
+            $cita_id=$usuariotodo->pivot->id;
+            $cita_id=$usuariotodo->pivot->id;
+       }
+
+            $proveedores= DB::table('user_cita_proveedor')
+            ->select('usercita_id', 'proveedor_id')
+            ->where('usercita_id', '=', $cita_id)->get();
+            foreach ($proveedores as $proveedor) {
+                $proveedoresX[]=$proveedor->proveedor_id;
+             }
+
+             $ProveedorAll = Proveedor::find($proveedoresX); 
          return view('provedores', [
-         'TodosProveedores' => $proveedores,
+         'TodosProveedores' => $ProveedorAll,
          ]);
 
          }
